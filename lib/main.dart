@@ -108,19 +108,20 @@ class _MyCalculatorState extends State<MyCalculator> {
   }
 
   //ส่วนการแสดงปุ๋มกดตัวเลขและเครื่องหมาย
-  // widget ชื่อ buildNumPadWidget() สำหรับแสดงปุ๋มกดต่าง ๆ 
+  // widget ชื่อ buildNumPadWidget() สำหรับแสดงปุ๋มกดต่าง ๆ ตั้งแต่ 0 - 9 และเครื่องหมายต่าง ๆ 
 
   Widget buildNumPadWidget() {
     return Container(
-        color: Colors.white,
+        color: Colors.white, //การแแสดงผลจะจัดเป็น Column และแต่ละคอลัมล์จะมีการแสดงผลเป้นปุ๋มแต่ละปุ๋มแบบ row 4 ปุ๋ม
         child: Column(
-          mainAxisSize: MainAxisSize.max,
+          mainAxisSize: MainAxisSize.max, //กำหนดให้แสดงแต่ละ Column แบบยืดเต็มพื้นที่
           children: <Widget>[
-            Row(children: <Widget>[
-              buildNumberButton("9", onTap: () {
-                addNumberToAnswer(9);
-              }),
-              buildNumberButton("8", onTap: () {
+            Row(children: <Widget>[   //แสดงปุ๋มแถวบนสุดโดยมีตัวเลข 4 ตัว โดยเรียกการทำงานของ class buildNumberButton
+              buildNumberButton("9",  
+              onTap: () {  
+                addNumberToAnswer(9); 
+              },),
+              buildNumberButton("8", onTap: () { // ฟังก์ชัน onTap คือฟังค์ชันสำหรับ handle กรณีที่ User กดที่ item ใน ปุ๋ม ทำหน้าที่คล้ายๆ onItemClickListener
                 addNumberToAnswer(8);
               }),
               buildNumberButton("7", onTap: () {
