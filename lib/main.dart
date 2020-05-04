@@ -1,63 +1,68 @@
-import 'package:flutter/material.dart';  //จะเป็นการ import ตัว package ของ material จาก flutter
-
+import 'package:flutter/material.dart'; //จะเป็นการ import ตัว package ของ material จาก flutter
 
 //ความแตกต่างระหว่าง StatelessWidget กับ StatefulWidget คือ
-//StatelessWidget คือ widget ที่ไม่มี state หรือไม่มีสภาวะการเปลี่ยนแปลง หรือไม่จำเป็นต้องใช้งานการเปลี่ยนแปลง จึงใช้งาน widgetนี้ 
+//StatelessWidget คือ widget ที่ไม่มี state หรือไม่มีสภาวะการเปลี่ยนแปลง หรือไม่จำเป็นต้องใช้งานการเปลี่ยนแปลง จึงใช้งาน widgetนี้
 //ส่วน StatefulWidget คือ  widget ที่มี state หรือมีสภาวะการเปลี่ยนแปลง ไปตามข้อมูลที่ได้รับหรือจากการกำหนดจากผู้ใช้
 //ข้อแตกต่างที่สำคัญของทั้งสองส่วนนี้คือ stateful widget จะมี State object ที่ใช้ในการเก็บข้อมูล state และ ทำการส่งต่อสำหรับใช้งานในกระบวนการสร้าง widget ใหม่เมื่อมีการเปลี่ยนแปลง ทำให้ค่า state ไม่ได้หายไปไหน
 
-void main() => runApp(MyApp());   //ประกาศว่าฟังก์ชั้น main จะเปิดที่คลาส MayApp
+void main() => runApp(MyApp()); //ประกาศว่าฟังก์ชั้น main จะเปิดที่คลาส MayApp
 
-class MyApp extends StatelessWidget {   // class MyApp จะทีการสร้าง MaterialApp ไว้สำหรับเรียกใช้งานคลาสย่อยชื่อ MyCalculator โดยคลาสแม่คือคลาส MyCalculator และมีคลาสลูกคือ _MyCalculatorState
+class MyApp extends StatelessWidget {
+  // class MyApp จะทีการสร้าง MaterialApp ไว้สำหรับเรียกใช้งานคลาสย่อยชื่อ MyCalculator โดยคลาสแม่คือคลาส MyCalculator และมีคลาสลูกคือ _MyCalculatorState
 
   @override
   Widget build(BuildContext context) {
-
     return MaterialApp(
       title: 'CALCULATOR',
-      home: MyCalculator(title: 'CALCULATOR BY JANTAPA 6035512034'),  //เรียกการทำงานของคลาส MyCalculator ให้มีการ render มาที่หน้า Home ของคลาส MyApp
+      home: MyCalculator(
+          title:
+              'CALCULATOR BY JANTAPA 6035512034'), //เรียกการทำงานของคลาส MyCalculator ให้มีการ render มาที่หน้า Home ของคลาส MyApp
     );
-
   }
 }
 
 //สร้างส่วนแสดงงผล state ของ Calculate
 //คลาส MyCalculator จะเป็นส่วนที่ทำการสร้างเครื่องคิดเลขโดยจะสร้าง state ชื่อ _MyCalculatorState ไว้สำหรับจัดการกับ state ต่าง ๆที่มีการเปลี่ยนค่าในโปรแกรมเครื่องคิดเลขนั่นเอง
 
-
 class MyCalculator extends StatefulWidget {
+  MyCalculator({Key key, this.title})
+      : super(key: key); //ทำการเรียกค่า title มาจาก class MyApp
 
-  MyCalculator({Key key, this.title}) : super(key: key);  //ทำการเรียกค่า title มาจาก class MyApp
+  final String title;
 
-  final String title;  
-  
-  //ประกาศตัวแปร title โดยมีชนิดเป็น String 
+  //ประกาศตัวแปร title โดยมีชนิดเป็น String
   // การใช้งาน final และ const มีข้อควรทำความเข้าใจดังนี้ สำหรับ final เราสามารถกำหนดได้เพียงครั้งเดียวและจะถูกเพิ่มเข้าไปในหน่วยความจำเมื่อมีการเรียกใช้งานเท่านั้น
 
-
   @override
-  _MyCalculatorState createState() => _MyCalculatorState();  //ทำการสร้าง state  ชื่อ _MyCalculatorState  ไว้หรับเปลี่ยนแปลงค่าซึ่งใช้งานในคลาส MyCalculator
+  _MyCalculatorState createState() =>
+      _MyCalculatorState(); //ทำการสร้าง state  ชื่อ _MyCalculatorState  ไว้หรับเปลี่ยนแปลงค่าซึ่งใช้งานในคลาส MyCalculator
 }
 
-// คลาสสำหรับการทำงานของ state _MyCalculatorState 
+// คลาสสำหรับการทำงานของ state _MyCalculatorState
 
 class _MyCalculatorState extends State<MyCalculator> {
-
-  String answer;        //ประกาศตัวแปร answer โดยมีชนิดเป็น String สำหรับเก็บค่าคำตอบเมื่อมีการคำนวณครั้งแรก
-  String answerTemp;    //ประกาศตัวแปร answerTemp โดยมีชนิดเป็น String สำหรับเก็บค่าคำตอบ
-  String inputFull;     //ประกาศตัวแปร inputFull โดยมีชนิดเป็น String สำหรับเก็บค่าคำตอบเมื่อมีการคำนวณเสร็จสิ้นของชุดก่อนหน้า
-  String operator;      //ประกาศตัวแปร operator โดยมีชนิดเป็น String สำหรับเก็บค่าของเครื่องหมายการคำนวณ
-  bool calculateMode;   //ประกาศตัวแปร calculateMode โดยมีชนิดเป็น boolean สำหรับเก็บค่าการทำงานของโหมดการคำนวณที่ผู้ใช้เลือกโดยมีค่าแค่ 2 ค่าคือ True , False
+  String
+      answer; //ประกาศตัวแปร answer โดยมีชนิดเป็น String สำหรับเก็บค่าคำตอบเมื่อมีการคำนวณครั้งแรก
+  String
+      answerTemp; //ประกาศตัวแปร answerTemp โดยมีชนิดเป็น String สำหรับเก็บค่าคำตอบ
+  String
+      inputFull; //ประกาศตัวแปร inputFull โดยมีชนิดเป็น String สำหรับเก็บค่าคำตอบเมื่อมีการคำนวณเสร็จสิ้นของชุดก่อนหน้า
+  String
+      operator; //ประกาศตัวแปร operator โดยมีชนิดเป็น String สำหรับเก็บค่าของเครื่องหมายการคำนวณ
+  bool
+      calculateMode; //ประกาศตัวแปร calculateMode โดยมีชนิดเป็น boolean สำหรับเก็บค่าการทำงานของโหมดการคำนวณที่ผู้ใช้เลือกโดยมีค่าแค่ 2 ค่าคือ True , False
 
   @override
-  void initState() {  //เรียกฟังก์ชั่นจาก flutter คือฟังก์ชั่นในการกำหนด state เเรกเริ่มให้กับตัวแปรต่าง ๆ ที่จะทำการเปลี่ยน state เมื่อมีการเรียกใช้
+  
+  void initState() {
+    //เรียกฟังก์ชั่นจาก flutter คือฟังก์ชั่นในการกำหนด state เเรกเริ่มให้กับตัวแปรต่าง ๆ ที่จะทำการเปลี่ยน state เมื่อมีการเรียกใช้
 
-    answer = " ";
-    operator = "";
-    answerTemp = "";
-    inputFull = "";
-    calculateMode = false;
-    super.initState();
+    answer = " ";  //กำหนดค่าเริ่มต้นของตัวแปร answer = ค่าว่าง
+    operator = "";  //กำหนดค่าเริ่มต้นของตัวแปร opreator = ค่าว่าง
+    answerTemp = "";  //กำหนดค่าเริ่มต้นของตัวแปร answerTemp = ค่าว่าง
+    inputFull = "";  //กำหนดค่าเริ่มต้นของตัวแปร inputFull = ค่าว่าง
+    calculateMode = false;  //กำหนดค่าเริ่มต้นของตัวแปร calculateMode = false
+    super.initState();  //กำหนด.shmedki initial State
   }
 
   //ส่วนการเรียกช้งาน MyCalculatePage
@@ -67,40 +72,45 @@ class _MyCalculatorState extends State<MyCalculator> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
-        title: Text(widget.title, style: TextStyle(color: Colors.white, fontSize: 19, fontWeight: FontWeight.bold)),
+        title: Text(widget.title,
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 19,
+                fontWeight: FontWeight.bold)),
         elevation: 1,
       ),
       body: Container(
           child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: <Widget>[
-            buildAnswerWidget(),
-            buildNumPadWidget()
-            ],
-          )),
+        mainAxisSize: MainAxisSize.max,
+        children: <Widget>[buildAnswerWidget(), buildNumPadWidget()],
+      )),
     );
   }
 
   //ส่วนแสดงการคำนวณและคำตอบ
 
   Widget buildAnswerWidget() {
-    return Expanded(child: Container(
-        padding: EdgeInsets.all(16),
-        color: Color(0xffdbdbdb),
-        child: Align(
-            alignment: Alignment.bottomRight,
-            child: Column(crossAxisAlignment: CrossAxisAlignment.end,
-                mainAxisSize: MainAxisSize.min, children: <Widget>[
-                  Text(answer,
-                      style: TextStyle(fontSize: 48, fontWeight: FontWeight.bold))
-                ]))));
+    return Expanded(
+        child: Container(
+            padding: EdgeInsets.all(16),
+            color: Color(0xffdbdbdb),
+            child: Align(
+                alignment: Alignment.bottomRight,
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      Text(answer,
+                          style: TextStyle(
+                              fontSize: 48, fontWeight: FontWeight.bold))
+                    ]))));
   }
 
   //ส่วนการแสดงปุ๋มกดตัวเลขและเครื่องหมาย
 
   Widget buildNumPadWidget() {
     return Container(
-        color: Color(0xffdbdbdb),
+        color: Colors.white,
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: <Widget>[
@@ -114,7 +124,7 @@ class _MyCalculatorState extends State<MyCalculator> {
               buildNumberButton("7", onTap: () {
                 addNumberToAnswer(7);
               }),
-                buildNumberButton("+", numberButton: false, onTap: () {
+              buildNumberButton("+", numberButton: false, onTap: () {
                 addOperatorToAnswer("+");
               }),
             ]),
@@ -147,18 +157,17 @@ class _MyCalculatorState extends State<MyCalculator> {
               }),
             ]),
             Row(children: <Widget>[
-                 buildNumberButton("C", numberButton: false, onTap: () {
+              buildNumberButton("C", numberButton: false, onTap: () {
                 clearAll();
               }),
               buildNumberButton("0", onTap: () {
                 addNumberToAnswer(0);
               }),
-              
               buildNumberButton("=", numberButton: false, onTap: () {
                 calculate();
               }),
-                buildNumberButton("/", numberButton: false, onTap: () {
-                calculate();
+              buildNumberButton("/", numberButton: false, onTap: () {
+                addOperatorToAnswer("/");
               }),
             ]),
           ],
@@ -185,7 +194,7 @@ class _MyCalculatorState extends State<MyCalculator> {
     });
   }
 
-    //โหมดการทำงานการล้างค่า
+  //โหมดการทำงานการล้างค่า
 
   void clearAll() {
     setState(() {
@@ -196,25 +205,27 @@ class _MyCalculatorState extends State<MyCalculator> {
     });
   }
 
-  //โหมดการทำงานการล้คำนวณค่าและการเซ้คค่าของ state 
+  //โหมดการทำงานการล้คำนวณค่าและการเซ้คค่าของ state
 
   void calculate() {
     setState(() {
-
       if (calculateMode) {
 
         bool decimalMode = false;
         double value = 0;
-       
-       //โหมดการบวกค่า
+
+        //โหมดการบวกค่า
         if (operator == "+") {
           value = (double.parse(answerTemp) + double.parse(answer));
         } else if (operator == "-") {
           value = (double.parse(answerTemp) - double.parse(answer));
         } else if (operator == "×") {
           value = (double.parse(answerTemp) * double.parse(answer));
-        } else if (operator == "÷") {
+        } else if (operator == "/") {
           value = (double.parse(answerTemp) / double.parse(answer));
+        }
+        else if (operator == "/" && answerTemp == "0") {
+          answer = "Error";
         }
 
         if (!decimalMode) {
@@ -227,6 +238,7 @@ class _MyCalculatorState extends State<MyCalculator> {
         operator = "";
         answerTemp = "";
         inputFull = "";
+
       }
     });
   }
@@ -245,23 +257,21 @@ class _MyCalculatorState extends State<MyCalculator> {
           answerTemp = answer;
           inputFull = "";
           operator = "";
-        } else {
+        } 
+        else {
           operator = op;
         }
       }
     });
   }
 
-
   void addNumberToAnswer(int number) {
     setState(() {
       if (number == 0 && answer == "0") {
         // Not do anything.
-      }
-      else if (number != 0 && answer == "0") {
+      } else if (number != 0 && answer == "0") {
         answer = number.toString();
-      }
-      else {
+      } else {
         answer += number.toString();
       }
     });
@@ -274,43 +284,48 @@ class _MyCalculatorState extends State<MyCalculator> {
       setState(() {
         if (answer.length > 1) {
           answer = answer.substring(0, answer.length - 1);
-          if (answer.length == 1 && (answer == "." || answer == "-")) {
+          if (answer.length == 1 && ( answer == "-")) {
             answer = "0";
           }
-        } else {
+        } 
+        else {
           answer = "0";
         }
       });
     }
   }
 
-  Widget buildNumberButton(String str, { @required Function()onTap, bool numberButton = true, }) {
+  Widget buildNumberButton(
+    String str, {
+    @required Function() onTap,
+    bool numberButton = true,
+  }) {
     Widget widget;
     if (numberButton) {
       widget = Container(
           child: Material(
               color: Colors.white,
               child: InkWell(
-                  onTap: onTap, splashColor: Colors.blue,
-                  child: Container(
-                      height: 70,
-                      child: Center(
-                          child: Text(str,
-                              style: TextStyle(
-                                  fontSize: 32, fontWeight: FontWeight.bold)))))));
-    } else {
-      widget = Container(
-          child: Material(
-              color: Colors.white,
-              child: InkWell(
-                onTap: onTap,
+                  onTap: onTap,
                   splashColor: Colors.blue,
                   child: Container(
                       height: 70,
                       child: Center(
                           child: Text(str,
                               style: TextStyle(
-                                  fontSize: 28)))))));
+                                  fontSize: 32,
+                                  )))))));
+    } else {
+      widget = Container(
+          child: Material(
+              color: Colors.white,
+              child: InkWell(
+                  onTap: onTap,
+                  splashColor: Colors.blue,
+                  child: Container(
+                      height: 70,
+                      child: Center(
+                          child: Text(str, style: TextStyle(fontSize: 28)))))));
     }
 
     return Expanded(child: widget);
