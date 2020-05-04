@@ -97,41 +97,27 @@ class _MyCalculatorState extends State<MyCalculator> {
           mainAxisSize: MainAxisSize.max,
           children: <Widget>[
             Row(children: <Widget>[
-              buildNumberButton("CE", numberButton: false, onTap: () {
-                clearAnswer();
-              }),
-              buildNumberButton("C", numberButton: false, onTap: () {
-                clearAll();
-              }),
-              buildNumberButton("⌫", numberButton: false, onTap: () {
-                removeAnswerLast();
-              }),
-              buildNumberButton("÷", numberButton: false, onTap: () {
-                addOperatorToAnswer("÷");
-              }),
-            ]),
-            Row(children: <Widget>[
-              buildNumberButton("7", onTap: () {
+              buildNumberButton("9", onTap: () {
                 addNumberToAnswer(7);
               }),
               buildNumberButton("8", onTap: () {
                 addNumberToAnswer(8);
               }),
-              buildNumberButton("9", onTap: () {
+              buildNumberButton("7", onTap: () {
                 addNumberToAnswer(9);
               }),
-              buildNumberButton("×", numberButton: false, onTap: () {
-                addOperatorToAnswer("×");
+              buildNumberButton("+", numberButton: false, onTap: () {
+                addOperatorToAnswer("+");
               }),
             ]),
             Row(children: <Widget>[
-              buildNumberButton("4", onTap: () {
+              buildNumberButton("6", onTap: () {
                 addNumberToAnswer(4);
               }),
               buildNumberButton("5", onTap: () {
                 addNumberToAnswer(5);
               }),
-              buildNumberButton("6", onTap: () {
+              buildNumberButton("4", onTap: () {
                 addNumberToAnswer(6);
               }),
               buildNumberButton("−", numberButton: false, onTap: () {
@@ -139,30 +125,30 @@ class _MyCalculatorState extends State<MyCalculator> {
               }),
             ]),
             Row(children: <Widget>[
-              buildNumberButton("1", onTap: () {
+              buildNumberButton("3", onTap: () {
                 addNumberToAnswer(1);
               }),
               buildNumberButton("2", onTap: () {
                 addNumberToAnswer(2);
               }),
-              buildNumberButton("3", onTap: () {
+              buildNumberButton("1", onTap: () {
                 addNumberToAnswer(3);
               }),
-              buildNumberButton("+", numberButton: false, onTap: () {
-                addOperatorToAnswer("+");
+              buildNumberButton("x", numberButton: false, onTap: () {
+                addOperatorToAnswer("x");
               }),
             ]),
             Row(children: <Widget>[
-              buildNumberButton("±", numberButton: false, onTap: () {
+              buildNumberButton("C", numberButton: false, onTap: () {
                 toggleNegative();
               }),
               buildNumberButton("0", onTap: () {
                 addNumberToAnswer(0);
               }),
-              buildNumberButton(".", numberButton: false, onTap: () {
+              buildNumberButton("=", numberButton: false, onTap: () {
                 addDotToAnswer();
               }),
-              buildNumberButton("=", numberButton: false, onTap: () {
+              buildNumberButton("/", numberButton: false, onTap: () {
                 calculate();
               }),
             ]),
