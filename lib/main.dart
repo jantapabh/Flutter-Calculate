@@ -247,14 +247,13 @@ class _MyCalculatorState extends State<MyCalculator> {
   void addOperatorToAnswer(String op) {
     setState(() {
       if (answer != " " && !calculateMode) {
-
+        
         calculateMode = true;
         answerTemp = answer;
         operator = op;
         answer = " ";
 
       } else if (calculateMode) {
-
         if (answer.isNotEmpty) {
           calculate();
           answerTemp = answer;
@@ -262,10 +261,10 @@ class _MyCalculatorState extends State<MyCalculator> {
           operator = "";
         } 
         else {
-          
           operator = op;
         }
       }
+     
     });
   }
 
