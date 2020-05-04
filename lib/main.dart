@@ -247,13 +247,14 @@ class _MyCalculatorState extends State<MyCalculator> {
   void addOperatorToAnswer(String op) {
     setState(() {
       if (answer != " " && !calculateMode) {
-        
+
         calculateMode = true;
         answerTemp = answer;
         operator = op;
         answer = " ";
 
       } else if (calculateMode) {
+
         if (answer.isNotEmpty) {
           calculate();
           answerTemp = answer;
@@ -268,7 +269,7 @@ class _MyCalculatorState extends State<MyCalculator> {
     });
   }
 
-  String err = "Error";
+
   // ตัวแปร number คือค่าที่ส่งมาเมื่อมีการกดปุ๋ม
 
   void addNumberToAnswer(int number) {
@@ -277,17 +278,18 @@ class _MyCalculatorState extends State<MyCalculator> {
 
     setState(() {
 
+      if(number == 0 && answer == "0" && operator == "/"){
+
+        answer = "Error";
+
+      }
       if (number == 0 && answer == "0") {
         // Not do anything.
       } else if (number != 0 && answer == "0") {
 
         answer = number.toString();
       }
-      else if( operator == "/" && number == 0){
-
-        answer = err;
-
-      }else {
+     else {
         answer += number.toString();
       }
     });
