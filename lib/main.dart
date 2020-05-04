@@ -52,7 +52,7 @@ class _MyCalculatorState extends State<MyCalculator> {
   @override
   void initState() {  //เรียกฟังก์ชั่นจาก flutter คือฟังก์ชั่นในการกำหนด state เเรกเริ่มให้กับตัวแปรต่าง ๆ ที่จะทำการเปลี่ยน state เมื่อมีการเรียกใช้
 
-    answer = "0";
+    answer = " ";
     operator = "";
     answerTemp = "";
     inputFull = "";
@@ -216,7 +216,18 @@ class _MyCalculatorState extends State<MyCalculator> {
 
         bool decimalMode = false;
         double value = 0;
-          
+       
+       //โหมดการบวกค่า
+        if (operator == "+") {
+          value = (double.parse(answerTemp) + double.parse(answer));
+        } else if (operator == "-") {
+          value = (double.parse(answerTemp) - double.parse(answer));
+        } else if (operator == "×") {
+          value = (double.parse(answerTemp) * double.parse(answer));
+        } else if (operator == "÷") {
+          value = (double.parse(answerTemp) / double.parse(answer));
+        }
+
         if (!decimalMode) {
           answer = value.toInt().toString();
         } else {
@@ -233,12 +244,12 @@ class _MyCalculatorState extends State<MyCalculator> {
 
   void addOperatorToAnswer(String op) {
     setState(() {
-      if (answer != "0" && !calculateMode) {
+      if (answer != " " && !calculateMode) {
         calculateMode = true;
         answerTemp = answer;
         inputFull += operator + " " + answerTemp;
         operator = op;
-        answer = "0";
+        answer = " ";
       } else if (calculateMode) {
         if (answer.isNotEmpty) {
           calculate();
@@ -284,11 +295,10 @@ class _MyCalculatorState extends State<MyCalculator> {
     }
   }
 
-  Widget buildNumberButton(String str, { @required Function()onTap, bool numberButton = true}) {
+  Widget buildNumberButton(String str, { @required Function()onTap, bool numberButton = true, }) {
     Widget widget;
     if (numberButton) {
       widget = Container(
-          margin: EdgeInsets.all(1),
           child: Material(
               color: Colors.white,
               child: InkWell(
@@ -301,10 +311,10 @@ class _MyCalculatorState extends State<MyCalculator> {
                                   fontSize: 32, fontWeight: FontWeight.bold)))))));
     } else {
       widget = Container(
-          margin: EdgeInsets.all(1),
           child: Material(
-              color: Color(0xffecf0f1),
-              child: InkWell(onTap: onTap,
+              color: Colors.white,
+              child: InkWell(
+                onTap: onTap,
                   splashColor: Colors.blue,
                   child: Container(
                       height: 70,
