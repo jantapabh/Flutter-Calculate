@@ -272,6 +272,7 @@ class _MyCalculatorState extends State<MyCalculator> {
       if (number == 0 && answer == "0") {
         // Not do anything.
       } else if (number != 0 && answer == "0") {
+        
         answer = number.toString();
       }
       else if( operator == "/" && number == 0){
