@@ -101,13 +101,14 @@ class _MyCalculatorState extends State<MyCalculator> {
                     crossAxisAlignment: CrossAxisAlignment.end, //จัดให้อยู่ตำแหน่งขวาสุดคือ .end
                     mainAxisSize: MainAxisSize.min, //ให้มีการแสดงผลตัวเลขที่ผู้ใช้กดโดยพื้นที่จะจำกัดแค่จำนวนที่กดเท่านั้น
                     children: <Widget>[
-                      Text(answer,
+                      Text(answer, //แสดงตัวแปร answer ที่ผู้ใช้เลือก
                           style: TextStyle(
                               fontSize: 40, ))
                     ]))));
   }
 
   //ส่วนการแสดงปุ๋มกดตัวเลขและเครื่องหมาย
+  // widget ชื่อ buildNumPadWidget() สำหรับแสดงปุ๋มกดต่าง ๆ 
 
   Widget buildNumPadWidget() {
     return Container(
