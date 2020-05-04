@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -11,10 +11,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
       ),
-      home: MyCalculator(title: 'CALCULATOR'),
+      home: MyCalculator(title: 'CALCULATOR BY JANTAPA 6035512034'),
     );
   }
 }
+
+//สร้างส่วนแสดงงผล state ของ Calculate
 
 class MyCalculator extends StatefulWidget {
 
