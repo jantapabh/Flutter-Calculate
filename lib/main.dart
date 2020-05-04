@@ -254,7 +254,6 @@ class _MyCalculatorState extends State<MyCalculator> {
         answer = " ";
       } else if (calculateMode) {
         if (answer.isNotEmpty) {
-          
           calculate();
           answerTemp = answer;
           inputFull = "";
@@ -269,11 +268,17 @@ class _MyCalculatorState extends State<MyCalculator> {
 
   void addNumberToAnswer(int number) {
     setState(() {
+
       if (number == 0 && answer == "0") {
         // Not do anything.
       } else if (number != 0 && answer == "0") {
         answer = number.toString();
-      } else {
+      }
+      else if( operator == "/" && number == 0){
+
+        answer = "Error";
+
+      }else {
         answer += number.toString();
       }
     });
