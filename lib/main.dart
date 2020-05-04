@@ -29,7 +29,11 @@ class MyCalculator extends StatefulWidget {
 
   MyCalculator({Key key, this.title}) : super(key: key);  //ทำการเรียกค่า title มาจาก class MyApp
 
-  final String title;  //ประกาศตัวแปร title โดยมีชนิดเป็น String
+  final String title;  
+  
+  //ประกาศตัวแปร title โดยมีชนิดเป็น String 
+  // การใช้งาน final และ const มีข้อควรทำความเข้าใจดังนี้ สำหรับ final เราสามารถกำหนดได้เพียงครั้งเดียวและจะถูกเพิ่มเข้าไปในหน่วยความจำเมื่อมีการเรียกใช้งานเท่านั้น
+
 
   @override
   _MyCalculatorState createState() => _MyCalculatorState();  //ทำการสร้าง state  ชื่อ _MyCalculatorState  ไว้หรับเปลี่ยนแปลงค่าซึ่งใช้งานในคลาส MyCalculator
@@ -39,11 +43,11 @@ class MyCalculator extends StatefulWidget {
 
 class _MyCalculatorState extends State<MyCalculator> {
 
-  String answer;
-  String answerTemp;
-  String inputFull;
-  String operator;
-  bool calculateMode;
+  String answer;        //ประกาศตัวแปร answer โดยมีชนิดเป็น String สำหรับเก็บค่าคำตอบเมื่อมีการคำนวณครั้งแรก
+  String answerTemp;    //ประกาศตัวแปร answerTemp โดยมีชนิดเป็น String สำหรับเก็บค่าคำตอบ
+  String inputFull;     //ประกาศตัวแปร inputFull โดยมีชนิดเป็น String สำหรับเก็บค่าคำตอบเมื่อมีการคำนวณเสร็จสิ้นของชุดก่อนหน้า
+  String operator;      //ประกาศตัวแปร operator โดยมีชนิดเป็น String สำหรับเก็บค่าของเครื่องหมายการคำนวณ
+  bool calculateMode;   //ประกาศตัวแปร operator โดยมีชนิดเป็น String สำหรับเก็บค่าการทำงานของโหมดการคำนวณที่ผู้ใช้เลือก
 
   @override
   void initState() {
@@ -68,8 +72,7 @@ class _MyCalculatorState extends State<MyCalculator> {
       body: Container(
           child: Column(
             mainAxisSize: MainAxisSize.max,
-            children: <Widget>[
-            buildAnswerWidget(),
+            children: <Widget>[buildAnswerWidget(),
             buildNumPadWidget()
             ],
           )),
@@ -84,7 +87,6 @@ class _MyCalculatorState extends State<MyCalculator> {
             alignment: Alignment.bottomRight,
             child: Column(crossAxisAlignment: CrossAxisAlignment.end,
                 mainAxisSize: MainAxisSize.min, children: <Widget>[
-                  Text(inputFull + " " + operator, style: TextStyle(fontSize: 18)),
                   Text(answer,
                       style: TextStyle(fontSize: 48, fontWeight: FontWeight.bold))
                 ]))));
