@@ -6,13 +6,12 @@ class MyApp extends StatelessWidget {   // class MyApp จะทีการส�
 
   @override
   Widget build(BuildContext context) {
+
     return MaterialApp(
       title: 'CALCULATOR',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
       home: MyCalculator(title: 'CALCULATOR BY JANTAPA 6035512034'),  //เรียกการทำงานของคลาส MyCalculator ให้มีการ render มาที่หน้า Home ของคลาส MyApp
     );
+    
   }
 }
 
@@ -24,11 +23,13 @@ class MyCalculator extends StatefulWidget {
 
   MyCalculator({Key key, this.title}) : super(key: key);  //ทำการเรียกค่า title มาจาก class MyApp
 
-  final String title;
+  final String title;  //ประกาศตัวแปร title โดยมีชนิดเป็น String
 
   @override
-  _MyCalculatorState createState() => _MyCalculatorState();
+  _MyCalculatorState createState() => _MyCalculatorState();  //ทำการสร้าง state  ชื่อ _MyCalculatorState  ไว้หรับเปลี่ยนแปลงค่าซึ่งใช้งานในคลาส MyCalculator
 }
+
+// คลาสสำหรับการทำงานของ state _MyCalculatorState 
 
 class _MyCalculatorState extends State<MyCalculator> {
 
