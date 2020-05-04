@@ -42,7 +42,7 @@ class MyCalculator extends StatefulWidget {
 
 class _MyCalculatorState extends State<MyCalculator> {
   String
-      answer; //ประกาศตัวแปร answer โดยมีชนิดเป็น String สำหรับเก็บค่าคำตอบเมื่อมีการคำนวณครั้งแรก
+      answer; //ประกาศตัวแปร answer โดยมีชนิดเป็น String สำหรับเก็บค่า number ที่ผู้ใช้กด
   String
       answerTemp; //ประกาศตัวแปร answerTemp โดยมีชนิดเป็น String สำหรับเก็บค่าคำตอบ
   String
@@ -90,20 +90,20 @@ class _MyCalculatorState extends State<MyCalculator> {
 
   //ส่วนแสดงการคำนวณและคำตอบ
 
-  Widget buildAnswerWidget() {
+  Widget buildAnswerWidget() { //สร้าง Wdget ชื่อ buildAnswerWidget โดยจะมีการ render เป็นแบบ Expanded โดยจะมีการยืดเต็มพื้นที่นั่นเอง
     return Expanded(
-        child: Container(
-            padding: EdgeInsets.all(16),
-            color: Color(0xffdbdbdb),
-            child: Align(
+        child: Container(  //ภายใน Expanded จะมีส่วนของ Container โดยจะสามารถกำหนดลักษณะการแสดงผลในรูปแบบต่าง ๆ ได่เช่นการกำหนดความห่างของขอบ การกำหนดสีและอีกมากมาย
+            padding: EdgeInsets.all(16), //กำหนดให้ขอบนอกของ container ทุกด้านขนาด 16
+            color: Colors.blueGrey, //กำหนดสี
+            child: Align( //สร้าง component Align สำหรับแสดงค่าตัวเลขที่ผู้ใช้กดเลือก
                 alignment: Alignment.bottomRight,
                 child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.end, //จัดให้อยู่ตำแหน่งขวาสุดคือ .end
+                    mainAxisSize: MainAxisSize.min, //ให้มีการแสดงผลตัวเลขที่ผู้ใช้กดโดยพื้นที่จะจำกัดแค่จำนวนที่กดเท่านั้น
                     children: <Widget>[
                       Text(answer,
                           style: TextStyle(
-                              fontSize: 48, fontWeight: FontWeight.bold))
+                              fontSize: 40, ))
                     ]))));
   }
 
