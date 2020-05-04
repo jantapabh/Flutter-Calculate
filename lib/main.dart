@@ -228,10 +228,7 @@ class _MyCalculatorState extends State<MyCalculator> {
         } else if (operator == "/") {
           value = (double.parse(answerTemp) / double.parse(answer));
         }
-        else if (operator == "/" && answerTemp == "0") {
-          answer = "Error";
-        }
-
+        
         if (!decimalMode) {
           answer = value.toInt().toString();
         } else {
@@ -257,6 +254,7 @@ class _MyCalculatorState extends State<MyCalculator> {
         answer = " ";
       } else if (calculateMode) {
         if (answer.isNotEmpty) {
+          
           calculate();
           answerTemp = answer;
           inputFull = "";
@@ -313,9 +311,10 @@ class _MyCalculatorState extends State<MyCalculator> {
                   onTap: onTap,
                   splashColor: Colors.blue,
                   child: Container(
-                      height: 70,
+                      height: 90,
                       child: Center(
-                          child: Text(str,
+                          child: Text(
+                            str,
                               style: TextStyle(
                                   fontSize: 32,
                                   )))))));
