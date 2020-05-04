@@ -45,12 +45,14 @@ class _MyCalculatorState extends State<MyCalculator> {
     super.initState();
   }
 
+  //ส่วนการเรียกช้งาน MyCalculatePage
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xffecf0f1),
-        title: Text(widget.title, style: TextStyle(color: Colors.black)),
+        backgroundColor: Colors.blue,
+        title: Text(widget.title, style: TextStyle(color: Colors.white, fontSize: 19, fontWeight: FontWeight.bold)),
         elevation: 1,
       ),
       body: Container(
