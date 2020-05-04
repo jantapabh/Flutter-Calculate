@@ -109,6 +109,7 @@ class _MyCalculatorState extends State<MyCalculator> {
 
   //ส่วนการแสดงปุ๋มกดตัวเลขและเครื่องหมาย
   // widget ชื่อ buildNumPadWidget() สำหรับแสดงปุ๋มกดต่าง ๆ ตั้งแต่ 0 - 9 และเครื่องหมายต่าง ๆ 
+  // สำหรับฟังก์ชัน buildNumPadWidget() คือจะสร้างปแถวทั้งหมดแบ่งเป็น 4 แถวโดยในแต่ละอถวจะมีปุ๋ม 4 ปุ๋มนั่นเองโดยแต่ละปุ๋มจะทำการ set ค่าตัวเลขโดยเมื่อกดปุ๋มจะทำการเซ็ตค่าตัวแปร answer
 
   Widget buildNumPadWidget() {
     return Container(
