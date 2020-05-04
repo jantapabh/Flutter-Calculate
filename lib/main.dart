@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';  //จะเป็นการ import ตัว package ของ material จาก flutter
 
-void main() => runApp(MyApp());
+void main() => runApp(MyApp());   //ประกาศว่าฟังก์ชั้น main จะเปิดที่คลาส MayApp
 
 class MyApp extends StatelessWidget {
 
