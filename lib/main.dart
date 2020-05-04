@@ -31,7 +31,9 @@ class MyCalculator extends StatefulWidget {
   final String title;  //ประกาศตัวแปร title โดยมีชนิดเป็น String
 
   @override
+  
   _MyCalculatorState createState() => _MyCalculatorState();  //ทำการสร้าง state  ชื่อ _MyCalculatorState  ไว้หรับเปลี่ยนแปลงค่าซึ่งใช้งานในคลาส MyCalculator
+
 }
 
 // คลาสสำหรับการทำงานของ state _MyCalculatorState 
