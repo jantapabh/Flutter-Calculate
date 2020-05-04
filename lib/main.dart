@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';  //จะเป็นการ import �
 
 void main() => runApp(MyApp());   //ประกาศว่าฟังก์ชั้น main จะเปิดที่คลาส MayApp
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatelessWidget {   // class MyApp จะทีการสร้าง MaterialApp ไว้สำหรับเรียกใช้งานคลาสย่อยชื่อ MyCalculator
 
   @override
   Widget build(BuildContext context) {
@@ -11,12 +11,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyCalculator(title: 'CALCULATOR BY JANTAPA 6035512034'),
+      home: MyCalculator(title: 'CALCULATOR BY JANTAPA 6035512034'),  //เรียกการทำงานของคลาส MyCalculator ให้มีการ render มาที่หน้า Home ของคลาส MyApp
     );
   }
 }
 
 //สร้างส่วนแสดงงผล state ของ Calculate
+//คลาส MyCalculator จะเป็นส่วนที่ทำการสร้างเครื่องคิดเลขโดยจะสร้าง state ชื่อ _MyCalculatorState ไว้สำหรับจัดการกับ state ต่าง ๆที่มีการเปลี่ยนค่าในโปรแกรมเครื่องคิดเลขนั่นเอง
 
 class MyCalculator extends StatefulWidget {
 
