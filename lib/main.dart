@@ -47,10 +47,11 @@ class _MyCalculatorState extends State<MyCalculator> {
   String answerTemp;    //ประกาศตัวแปร answerTemp โดยมีชนิดเป็น String สำหรับเก็บค่าคำตอบ
   String inputFull;     //ประกาศตัวแปร inputFull โดยมีชนิดเป็น String สำหรับเก็บค่าคำตอบเมื่อมีการคำนวณเสร็จสิ้นของชุดก่อนหน้า
   String operator;      //ประกาศตัวแปร operator โดยมีชนิดเป็น String สำหรับเก็บค่าของเครื่องหมายการคำนวณ
-  bool calculateMode;   //ประกาศตัวแปร operator โดยมีชนิดเป็น String สำหรับเก็บค่าการทำงานของโหมดการคำนวณที่ผู้ใช้เลือก
+  bool calculateMode;   //ประกาศตัวแปร calculateMode โดยมีชนิดเป็น boolean สำหรับเก็บค่าการทำงานของโหมดการคำนวณที่ผู้ใช้เลือกโดยมีค่าแค่ 2 ค่าคือ True , False
 
   @override
-  void initState() {
+  void initState() {  //เรียกฟังก์ชั่นจาก flutter คือฟังก์ชั่นในการกำหนด state เเรกเริ่มให้กับตัวแปรต่าง ๆ ที่จะทำการเปลี่ยน state เมื่อมีการเรียกใช้
+
     answer = "0";
     operator = "";
     answerTemp = "";
@@ -72,12 +73,15 @@ class _MyCalculatorState extends State<MyCalculator> {
       body: Container(
           child: Column(
             mainAxisSize: MainAxisSize.max,
-            children: <Widget>[buildAnswerWidget(),
+            children: <Widget>[
+            buildAnswerWidget(),
             buildNumPadWidget()
             ],
           )),
     );
   }
+
+  //ส่วนแสดงการคำนวณและคำตอบ
 
   Widget buildAnswerWidget() {
     return Expanded(child: Container(
@@ -91,6 +95,8 @@ class _MyCalculatorState extends State<MyCalculator> {
                       style: TextStyle(fontSize: 48, fontWeight: FontWeight.bold))
                 ]))));
   }
+
+  //ส่วนการแสดงปุ๋มกดตัวเลขและเครื่องหมาย
 
   Widget buildNumPadWidget() {
     return Container(
@@ -161,9 +167,7 @@ class _MyCalculatorState extends State<MyCalculator> {
               buildNumberButton("0", onTap: () {
                 addNumberToAnswer(0);
               }),
-              buildNumberButton(".", numberButton: false, onTap: () {
-                addDotToAnswer();
-              }),
+              
               buildNumberButton("=", numberButton: false, onTap: () {
                 calculate();
               }),
@@ -172,51 +176,47 @@ class _MyCalculatorState extends State<MyCalculator> {
         ));
   }
 
+  //โหมดการทำงานการลบค่า
+
   void toggleNegative() {
     setState(() {
       if (answer.contains("-")) {
-        answer = answer.replaceAll("-", "");
+        answer = answer.replaceAll("-", " ");
       } else {
         answer = "-" + answer;
       }
     });
   }
 
+  //โหมดการทำงานการล้างค่า
+
   void clearAnswer() {
     setState(() {
-      answer = "0";
+      answer = " ";
     });
   }
 
+    //โหมดการทำงานการล้างค่า
+
   void clearAll() {
     setState(() {
-      answer = "0";
+      answer = " ";
       inputFull = "";
       calculateMode = false;
       operator = "";
     });
   }
 
+  //โหมดการทำงานการล้คำนวณค่าและการเซ้คค่าของ state 
 
   void calculate() {
     setState(() {
+
       if (calculateMode) {
+
         bool decimalMode = false;
         double value = 0;
-        if (answer.contains(".") || answerTemp.contains(".")) {
-          decimalMode = true;
-        }
-
-        if (operator == "+") {
-          value = (double.parse(answerTemp) + double.parse(answer));
-        } else if (operator == "-") {
-          value = (double.parse(answerTemp) - double.parse(answer));
-        } else if (operator == "×") {
-          value = (double.parse(answerTemp) * double.parse(answer));
-        } else if (operator == "÷") {
-          value = (double.parse(answerTemp) / double.parse(answer));
-        }
-
+          
         if (!decimalMode) {
           answer = value.toInt().toString();
         } else {
@@ -252,13 +252,6 @@ class _MyCalculatorState extends State<MyCalculator> {
     });
   }
 
-  void addDotToAnswer() {
-    setState(() {
-      if (!answer.contains(".")) {
-        answer = answer + ".";
-      }
-    });
-  }
 
   void addNumberToAnswer(int number) {
     setState(() {
