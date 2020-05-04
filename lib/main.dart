@@ -6,9 +6,10 @@ void main() => runApp(MyApp());
 
 var headerSection = Column(
   children: <Widget>[
+    Expanded(child: 
     Container(
       child: Text('Program:',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
-     )
+     ))
   ]
 );
 
