@@ -44,7 +44,7 @@ class _MyCalculatorState extends State<MyCalculator> {
   String
       answer; //ประกาศตัวแปร answer โดยมีชนิดเป็น String สำหรับเก็บค่า number ที่ผู้ใช้กด
   String
-      answerTemp; //ประกาศตัวแปร answerTemp โดยมีชนิดเป็น String สำหรับเก็บค่าคำตอบ
+      answerTemp; //ประกาศตัวแปร answerTemp โดยมีชนิดเป็น String สำหรับเก็บค่า answer จำนวนแรก
   String
       inputFull; //ประกาศตัวแปร inputFull โดยมีชนิดเป็น String สำหรับเก็บค่าคำตอบเมื่อมีการคำนวณเสร็จสิ้นของชุดก่อนหน้า
   String
@@ -247,12 +247,14 @@ class _MyCalculatorState extends State<MyCalculator> {
   void addOperatorToAnswer(String op) {
     setState(() {
       if (answer != " " && !calculateMode) {
+
         calculateMode = true;
         answerTemp = answer;
-        inputFull += operator + " " + answerTemp;
         operator = op;
         answer = " ";
+
       } else if (calculateMode) {
+
         if (answer.isNotEmpty) {
           calculate();
           answerTemp = answer;
@@ -260,24 +262,31 @@ class _MyCalculatorState extends State<MyCalculator> {
           operator = "";
         } 
         else {
+          
           operator = op;
         }
       }
     });
   }
 
+  String err = "Error";
+  // ตัวแปร number คือค่าที่ส่งมาเมื่อมีการกดปุ๋ม
+
   void addNumberToAnswer(int number) {
+
+    
+
     setState(() {
 
       if (number == 0 && answer == "0") {
         // Not do anything.
       } else if (number != 0 && answer == "0") {
-        
+
         answer = number.toString();
       }
       else if( operator == "/" && number == 0){
 
-        answer = "Error";
+        answer = err;
 
       }else {
         answer += number.toString();
