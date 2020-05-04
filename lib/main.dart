@@ -71,9 +71,9 @@ class _MyCalculatorState extends State<MyCalculator> {
   @override
   Widget build(BuildContext context) { 
     return Scaffold(   //กำหนดให้มีการ return ส่วนของ Scaffold โดยภายในมีคอมโพเนนต์ backgroundColor, title และ  elevation
-      appBar: AppBar(
-        backgroundColor: Colors.blue,
-        title: Text(widget.title,
+      appBar: AppBar( //สร้าง component appBar โดยภายในเราสามารถกำหนดลักษณะต่าง ๆ ได้เช่น สี, ข้อความ เป็นต้น
+        backgroundColor: Colors.blue, //กำหนดให้ Appbar เป็น สีฟ้า
+        title: Text(widget.title, //กำหนดข้อความโดยมีการตกแต่งลักษณะต่าง ๆ ด้วย
             style: TextStyle(
                 color: Colors.white,
                 fontSize: 19,
