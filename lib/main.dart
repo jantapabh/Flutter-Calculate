@@ -66,10 +66,11 @@ class _MyCalculatorState extends State<MyCalculator> {
   }
 
   //ส่วนการเรียกช้งาน MyCalculatePage
+  //ส่วนฟังก์ชันในการ render ส่วนของ component ต่าง ๆ ไปแสดงบนหน้าหลักของแอป
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+  Widget build(BuildContext context) { 
+    return Scaffold(   //กำหนดให้มีการ return ส่วนของ Scaffold โดยภายในมีคอมโพเนนต์ backgroundColor, title และ  elevation
       appBar: AppBar(
         backgroundColor: Colors.blue,
         title: Text(widget.title,
@@ -79,9 +80,9 @@ class _MyCalculatorState extends State<MyCalculator> {
                 fontWeight: FontWeight.bold)),
         elevation: 1,
       ),
-      body: Container(
-          child: Column(
-        mainAxisSize: MainAxisSize.max,
+      body: Container(  //ในส่วนของ Body จะมีการ render คอมโพเนนต์หลักที่ชื่อว่า vcontainer โดยภายในประกอบด้วยส่วนคอมโพเนนต์ย่อยเป็น column
+        child: Column(
+        mainAxisSize: MainAxisSize.max, //ภายในการ render จะแสดงส่วนของการทำงานในคลาส buildAnswerWidget() และ buildNumPadWidget() โดยมีการจัดตำแหน่งการแสดงผลแบบ MainAxisSize
         children: <Widget>[buildAnswerWidget(), buildNumPadWidget()],
       )),
     );
