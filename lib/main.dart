@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';  //จะเป็นการ import ตัว package ของ material จาก flutter
 
+
 //ความแตกต่างระหว่าง StatelessWidget กับ StatefulWidget คือ
 //StatelessWidget คือ widget ที่ไม่มี state หรือไม่มีสภาวะการเปลี่ยนแปลง หรือไม่จำเป็นต้องใช้งานการเปลี่ยนแปลง จึงใช้งาน widgetนี้ 
 //ส่วน StatefulWidget คือ  widget ที่มี state หรือมีสภาวะการเปลี่ยนแปลง ไปตามข้อมูลที่ได้รับหรือจากการกำหนดจากผู้ใช้
@@ -31,9 +32,7 @@ class MyCalculator extends StatefulWidget {
   final String title;  //ประกาศตัวแปร title โดยมีชนิดเป็น String
 
   @override
-  
   _MyCalculatorState createState() => _MyCalculatorState();  //ทำการสร้าง state  ชื่อ _MyCalculatorState  ไว้หรับเปลี่ยนแปลงค่าซึ่งใช้งานในคลาส MyCalculator
-
 }
 
 // คลาสสำหรับการทำงานของ state _MyCalculatorState 
@@ -69,7 +68,8 @@ class _MyCalculatorState extends State<MyCalculator> {
       body: Container(
           child: Column(
             mainAxisSize: MainAxisSize.max,
-            children: <Widget>[buildAnswerWidget(),
+            children: <Widget>[
+            buildAnswerWidget(),
             buildNumPadWidget()
             ],
           )),
@@ -97,27 +97,41 @@ class _MyCalculatorState extends State<MyCalculator> {
           mainAxisSize: MainAxisSize.max,
           children: <Widget>[
             Row(children: <Widget>[
-              buildNumberButton("9", onTap: () {
+              buildNumberButton("CE", numberButton: false, onTap: () {
+                clearAnswer();
+              }),
+              buildNumberButton("C", numberButton: false, onTap: () {
+                clearAll();
+              }),
+              buildNumberButton("⌫", numberButton: false, onTap: () {
+                removeAnswerLast();
+              }),
+              buildNumberButton("÷", numberButton: false, onTap: () {
+                addOperatorToAnswer("÷");
+              }),
+            ]),
+            Row(children: <Widget>[
+              buildNumberButton("7", onTap: () {
                 addNumberToAnswer(7);
               }),
               buildNumberButton("8", onTap: () {
                 addNumberToAnswer(8);
               }),
-              buildNumberButton("7", onTap: () {
+              buildNumberButton("9", onTap: () {
                 addNumberToAnswer(9);
               }),
-              buildNumberButton("+", numberButton: false, onTap: () {
-                addOperatorToAnswer("+");
+              buildNumberButton("×", numberButton: false, onTap: () {
+                addOperatorToAnswer("×");
               }),
             ]),
             Row(children: <Widget>[
-              buildNumberButton("6", onTap: () {
+              buildNumberButton("4", onTap: () {
                 addNumberToAnswer(4);
               }),
               buildNumberButton("5", onTap: () {
                 addNumberToAnswer(5);
               }),
-              buildNumberButton("4", onTap: () {
+              buildNumberButton("6", onTap: () {
                 addNumberToAnswer(6);
               }),
               buildNumberButton("−", numberButton: false, onTap: () {
@@ -125,30 +139,30 @@ class _MyCalculatorState extends State<MyCalculator> {
               }),
             ]),
             Row(children: <Widget>[
-              buildNumberButton("3", onTap: () {
+              buildNumberButton("1", onTap: () {
                 addNumberToAnswer(1);
               }),
               buildNumberButton("2", onTap: () {
                 addNumberToAnswer(2);
               }),
-              buildNumberButton("1", onTap: () {
+              buildNumberButton("3", onTap: () {
                 addNumberToAnswer(3);
               }),
-              buildNumberButton("x", numberButton: false, onTap: () {
-                addOperatorToAnswer("x");
+              buildNumberButton("+", numberButton: false, onTap: () {
+                addOperatorToAnswer("+");
               }),
             ]),
             Row(children: <Widget>[
-              buildNumberButton("C", numberButton: false, onTap: () {
+              buildNumberButton("±", numberButton: false, onTap: () {
                 toggleNegative();
               }),
               buildNumberButton("0", onTap: () {
                 addNumberToAnswer(0);
               }),
-              buildNumberButton("=", numberButton: false, onTap: () {
+              buildNumberButton(".", numberButton: false, onTap: () {
                 addDotToAnswer();
               }),
-              buildNumberButton("/", numberButton: false, onTap: () {
+              buildNumberButton("=", numberButton: false, onTap: () {
                 calculate();
               }),
             ]),
