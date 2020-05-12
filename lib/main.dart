@@ -246,14 +246,16 @@ class _MyCalculatorState extends State<MyCalculator> {
     });
   }
 
+  //เมธอด addOperatorToAnswer ใช้สำหรับเพิ่มเครื่องหมายดำเนินการไปยังสมการนั่นเองซึ่งมีการทำงานคือจะรับค่าตัวแปรมา 1 ค่าคือตัวแปร op
+
   void addOperatorToAnswer(String op) {
     setState(() {
-      if (answer != " " && !calculateMode) {
+      if (answer != " " && !calculateMode) { //เงื่อนไขแรกทำการเช็คค่าว่าตัวแปร answer ว่าเท่ากับค่าว่างหรือไม่และมรการเลือกโหมดการคำนวณหรือไม่ หากเข้าเงื่อนไขจะทำงานดังนี้
 
-        calculateMode = true;
-        answerTemp = answer;
-        operator = op;
-        answer = " ";
+        calculateMode = true; //เซ็ตค่า cslculateMode ให้มีค่าเป็น true 
+        answerTemp = answer; // นำค่าในตัวแปร answer ใส่ใน answerTemp 
+        operator = op;  // เช็ตค่าตัวแปร operator ให้มีค่าเท่ากับค่า op ที่่รับมา 
+        answer = " "; // เช็ตค่า answer ให้เท่ากับค่าว่าง
 
       } else if (calculateMode) {
 
