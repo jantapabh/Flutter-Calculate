@@ -303,58 +303,59 @@ class _MyCalculatorState extends State<MyCalculator> {
 
 //จบการทำงานของเมธอด addNumberToAnswer
 
-  void removeAnswerLast() {
-    if (answer == "0") {
+  void removeAnswerLast() { //เมธอดนี้จะทำการล้างคำตอบ
+
+    if (answer == "0") { // เช็คค่าเงื่อนไขโดยเช็คตัวแปร answer ว่าเท่ากับ 0 หรือไม่หากมีค่าเป็น 0 จะไม่ทำคำสั่งใด ๆ
       // Not do anything.
-    } else {
-      setState(() {
-        if (answer.length > 1) {
-          answer = answer.substring(0, answer.length - 1);
-          if (answer.length == 1 && ( answer == "-")) {
-            answer = "0";
+    } else {  //เงื่อนไข else จะทำก็ต่อเมื่อไม่เข้าเงื่อนไข if นั่นเอง
+      setState(() {  
+        if (answer.length > 1) {  // เงื่อนไขในการเช็คค่าความยาวของตัวแปร answer ว่ามีค่าความยาวมากกว่า 1 หรือไม่
+          answer = answer.substring(0, answer.length - 1); // หากเข้าเงื่อนไขจะทำตามคำสั่งนี้คือจะนำ ตัวแปร answer มาทำการ substring โดยทำการตัดข้อความนั่นเองโดยเลือกตัดที่ตำแหน่ง 0 จนถึงความยาวของตัวแปร answer ลบ 1
+          if (answer.length == 1 && ( answer == "-")) { // ทำการเช็คเงื่อนไขว่า answer มีค่าความยาวเท่ากับ 1 หรือไม่และ answer เป็น - ค่าลบหรือไม่
+            answer = "0"; // หากเป็นค่าลบจะให้เป็น 0
           }
         } 
         else {
-          answer = "0";
+          answer = "0"; // เงื่อนไขนอกเหนือจากนั้นจะให้ answer เท่ากับ 0
         }
-      });
+      }); // จบการทำงานในเมธอด removeAnswerLast
     }
   }
 
-  Widget buildNumberButton(
+  Widget buildNumberButton( // เมธอด buildNumberButton ใช้ในการสร้างปุ่มกดโดยจะกำหนดคุณสมบัติเช่นสีและการกดปุ่ม onTap 
     String str, {
     @required Function() onTap,
-    bool numberButton = true,
+    bool numberButton = true, 
   }) {
-    Widget widget;
-    if (numberButton) {
-      widget = Container(
-          child: Material(
-              color: Colors.white,
-              child: InkWell(
+    Widget widget; //สร้าง widget ชื่อ widget
+    if (numberButton) { // หาก numberButton มีค่าเป็น true จะทำตามเงื่อนไขข้างล่างคือ
+      widget = Container( //สร้างส่วน container
+          child: Material(  // สรา้งส่วน material
+              color: Colors.white,  //กำหนดสีขาว
+              child: InkWell( //ส่วนปุ่มกดกำหนด onTap และสี
                   onTap: onTap,
                   splashColor: Colors.blue,
                   child: Container(
-                      height: 90,
-                      child: Center(
+                      height: 90, //กำหนดความสูงของปุ่มกดทั้งหมดมีค่าเท่ากับ 90
+                      child: Center( 
                           child: Text(
-                            str,
+                            str, //แสดงตัวแปร str เมือ่กดปุ่มตรงส่วนแสดงผล
                               style: TextStyle(
-                                  fontSize: 32,
+                                  fontSize: 32, //ขนาดของตัวแักษารที่กดแล้วแสดง
                                   )))))));
     } else {
-      widget = Container(
-          child: Material(
-              color: Colors.white,
+      widget = Container( //สร้างส่วน container
+          child: Material(  // สรา้งส่วน material
+              color: Colors.white, //กำหนดสีขาว
               child: InkWell(
                   onTap: onTap,
-                  splashColor: Colors.blue,
+                  splashColor: Colors.blue, // กำหนดสีฟ้าที่ส่วนปุ่มกด
                   child: Container(
-                      height: 70,
-                      child: Center(
+                      height: 70, //กำหนดความสูงของช่องแสดงผลมีค่าเป็น 70
+                      child: Center( 
                           child: Text(str, style: TextStyle(fontSize: 28)))))));
     }
 
-    return Expanded(child: widget);
+    return Expanded(child: widget); // ให้แสดงผล widget ที่สร้างแบบ expended คือจะยืดเต็มส่วนที่แสดงผล
   }
 }
