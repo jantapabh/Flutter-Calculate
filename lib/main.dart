@@ -175,7 +175,7 @@ class _MyCalculatorState extends State<MyCalculator> {
               }),
             ]),
           ],
-        ));
+        ));  //จบการทำงานของ buildNumPadWidget()
   }
 
   //โหมดการทำงานการลบค่า
