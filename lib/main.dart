@@ -261,47 +261,47 @@ class _MyCalculatorState extends State<MyCalculator> {
          answer = "Error";
        }
 
-      } else if (calculateMode) { //
+      } else if (calculateMode) { //ส่วนเช็คเงื่อนไขเมธอด calculateMode หากไม่มีการเลือกการทำงาน
 
-        if (answer.isNotEmpty) {
-          calculate();
-          answerTemp = answer;
-          inputFull = "";
-          operator = "";
+        if (answer.isNotEmpty) { //ส่วนเช็ตค่าตัวแปร answer ว่าเป็นค่าว่างหรือไม่หากว่างจะเข้าเงื่อนไข
+          calculate();  // เรียกฟังก์ชั่น calculate เพื่อทำการคำนวณ
+          answerTemp = answer; // นำค่าในตัวแปร answer ใส่ใน answerTemp 
+          inputFull = ""; //เช็คค่าให้ตัวแปร inputFull เป็นค่าว่าง
+          operator = ""; // เช็ตค่าตัวแปร operator ให้มีค่าเท่ากับค่าว่าง
         } 
         else {
-          operator = op;
+          operator = op; //ถ้ามีการคำนวณหรือค่า answer ไม่เป็นค่าว่างจะเช็ตค่าตัวแปร  operator ให้มีค่าเท่ากับ op
         }
       }
      
     });
-  }
+  } // จบฟังก์ชั่นการทำงาน addOperatorToAnswer
 
 
   // ตัวแปร number คือค่าที่ส่งมาเมื่อมีการกดปุ๋ม
 
-  void addNumberToAnswer(int number) {
-
-    
+  void addNumberToAnswer(int number) {  // ในส่วนการทำงานในฟังก์ชั่น addNumberToAnswer เป็นส่วนที่ทำการเช็คเงื่อนไขต่าง ๆ ของตัวเลขที่กดเข้ามาจากปุ่มกดซึ่งตัวเลขที่กดมาจะมาทำการเช็คค่าในเงื่อนไขดังนี้
 
     setState(() {
 
-      if( operator == "/" && answer == "0"){
+      if( operator == "/" && number == 0){  // ถ้าตัวแปร operator มีค่าเท่ากับ / และ number เท่ากับ 0 จะให้ answer มีค่าเท่ากับ Error
 
         answer = "Error";
 
       }
-      if (number == 0 && answer == "0") {
+      if (number == 0 && answer == "0") { // เช็คเงื่อนไขการทำงานถ้าหากค่าตัวเลขที่กดมาจากปุ่มนั้นมีค่าเท่ากับ 0 และค่าตัวแปร answer เท่ากับ 0 จะไม่มีการทำคำสั่งใด
         // Not do anything.
-      } else if (number != 0 && answer == "0") {
+      } else if (number != 0 && answer == "0") { //เช็คเงื่อนไขนี้หากไม่เข้าเงื่อนไขข้างบนคือจะเช็นว่าหาก number ไม่เป็นค่า 0 และค่าตัวแปร answer เท่ากับ 0 จะทำการแปลงตัวแปร number เป็น string และเช็คค่าใส่ในตัวแปร answer
 
-        answer = number.toString();
+        answer = number.toString(); //แปลงตัวแปร number เป็น string และใส่ในตัววแปรชื่อ answer
       }
      else {
-        answer += number.toString();
+        answer += number.toString(); // หากไม่เข้าเงื่อนไขใดเลยจะนำค่าตัวแปร answer บวกกับค่า number ที่ผู้ใช้กดและทำการแปลงเป็น string นั่นเอง
       }
     });
   }
+
+//จบการทำงานของเมธอด addNumberToAnswer
 
   void removeAnswerLast() {
     if (answer == "0") {
