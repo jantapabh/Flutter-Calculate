@@ -117,50 +117,50 @@ class _MyCalculatorState extends State<MyCalculator> {
         child: Column(
           mainAxisSize: MainAxisSize.max, //กำหนดให้แสดงแต่ละ Column แบบยืดเต็มพื้นที่
           children: <Widget>[
-            Row(children: <Widget>[   //แสดงปุ๋มแถวบนสุดโดยมีตัวเลข 4 ตัว โดยเรียกการทำงานของ class buildNumberButton
-              buildNumberButton("9",  
+            Row(children: <Widget>[   //แสดงปุ๋มแถวบนสุดโดยมีตัวเลข 4 ตัว โดยเรียกการทำงานของ class buildNumberButton //แสดงปุ๋มแถวบนสุดโดยมีตัวเลข 4 ตัว โดยเรียกการทำงานของ class buildNumberButton
+              buildNumberButton("9",  //ปุ่มแสดงเลข 9 และส่งค่า 9 ไปยังเมธอด addNumberToAnswer()
               onTap: () {  
                 addNumberToAnswer(9); 
               },),
               buildNumberButton("8", onTap: () {  // ฟังก์ชัน onTap คือฟังค์ชันสำหรับ handle กรณีที่ User กดที่ item ใน ปุ๋ม ทำหน้าที่คล้ายๆ onItemClickListener
-                addNumberToAnswer(8);
+                addNumberToAnswer(8); //ปุ่มแสดงเลข 8 และส่งค่า 8 ไปยังเมธอด addNumberToAnswer()
               }),
               buildNumberButton("7", onTap: () {
-                addNumberToAnswer(7);
+                addNumberToAnswer(7); //ปุ่มแสดงเลข 7 และส่งค่า 7 ไปยังเมธอด addNumberToAnswer()
               }),
               buildNumberButton("+", numberButton: false, onTap: () {
-                addOperatorToAnswer("+");
+                addOperatorToAnswer("+");  //ปุ่มแสดงเครื่องหมาย + และส่งค่า + ไปยังเมธอด addOperatorToAnswer()
               }),
             ]),
-            Row(children: <Widget>[
+            Row(children: <Widget>[   //แสดงปุ๋มแถวที่สองโดยนับจากบนโดยมีตัวเลข 4 ตัว โดยเรียกการทำงานของ class buildNumberButton 
               buildNumberButton("6", onTap: () {
-                addNumberToAnswer(6);
+                addNumberToAnswer(6); //ปุ่มแสดงเลข 6 และส่งค่า 6 ไปยังเมธอด addNumberToAnswer()
               }),
               buildNumberButton("5", onTap: () {
-                addNumberToAnswer(5);
+                addNumberToAnswer(5);  //ปุ่มแสดงเลข 5 และส่งค่า 5 ไปยังเมธอด addNumberToAnswer()
               }),
               buildNumberButton("4", onTap: () {
-                addNumberToAnswer(4);
+                addNumberToAnswer(4); //ปุ่มแสดงเลข 4 และส่งค่า 4 ไปยังเมธอด addNumberToAnswer()
               }),
               buildNumberButton("−", numberButton: false, onTap: () {
-                addOperatorToAnswer("-");
+                addOperatorToAnswer("-"); //ปุ่มแสดงเครื่องหมาย - และส่งค่า - ไปยังเมธอด addOperatorToAnswer()
               }),
             ]),
-            Row(children: <Widget>[
+            Row(children: <Widget>[ //แสดงปุ๋มแถวที่สามโดยนับจากบนโดยมีตัวเลข 4 ตัว โดยเรียกการทำงานของ class buildNumberButton
               buildNumberButton("3", onTap: () {
-                addNumberToAnswer(3);
+                addNumberToAnswer(3); //ปุ่มแสดงเลข 3 และส่งค่า 3 ไปยังเมธอด addNumberToAnswer()
               }),
               buildNumberButton("2", onTap: () {
-                addNumberToAnswer(2);
+                addNumberToAnswer(2);  //ปุ่มแสดงเลข 2 และส่งค่า 2 ไปยังเมธอด addNumberToAnswer()
               }),
               buildNumberButton("1", onTap: () {
-                addNumberToAnswer(1);
+                addNumberToAnswer(1);  //ปุ่มแสดงเลข 1 และส่งค่า 1 ไปยังเมธอด addNumberToAnswer()
               }),
               buildNumberButton("×", numberButton: false, onTap: () {
-                addOperatorToAnswer("×");
+                addOperatorToAnswer("×"); //ปุ่มแสดงเครื่องหมาย x และส่งค่า x ไปยังเมธอด addOperatorToAnswer()
               }),
             ]),
-            Row(children: <Widget>[
+            Row(children: <Widget>[ //แสดงปุ๋มแถวสุดท้ายโดยนับจากบนโดยมีตัวเลข 4 ตัว โดยเรียกการทำงานของ class buildNumberButton
               buildNumberButton("C", numberButton: false, onTap: () {
                 clearAll();
               }),
