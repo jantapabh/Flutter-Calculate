@@ -180,12 +180,12 @@ class _MyCalculatorState extends State<MyCalculator> {
 
   //โหมดการทำงานการลบค่า
 
-  void toggleNegative() {
+  void toggleNegative() {  //เมธอดการลบค่าจะทำการเซ็ตค่าตัวแปร answer โดยนำค่าตัวแปรที่ 1 มาลบกับตัวแปรที่ 2 
     setState(() {
-      if (answer.contains("-")) {
-        answer = answer.replaceAll("-", " ");
+      if (answer.contains("-")) { //เช็คเงื่อนไขโดยเรียกใช้เมธอด contains ในการเปรียบเทียบว่าตัวอักษรที่กดเป็ยน - ใช่หรือไม่
+        answer = answer.replaceAll("-", " "); // แทนที่คำตอบที่แสดงบนส่วนแสดงตัวเลขที่กดด้วยช่องว่าง
       } else {
-        answer = "-" + answer;
+        answer = "-" + answer; // ถ้าไม่เข้าเงื่อนไขด้านบนจะทำเงื่อนไขนี้คือการเซ็ตค่าตัวแปร answer ให้มีค่า - แล้วตามด้วยค่าคำตอบ
       }
     });
   }
@@ -193,7 +193,7 @@ class _MyCalculatorState extends State<MyCalculator> {
   //โหมดการทำงานการล้างค่า
 
   void clearAnswer() {
-    setState(() {
+    setState(() {  //ฟังก์ชั่นนี้จะทำการเคลียร์ค่าทั้งหมดให้เป็นค่าว่าง
       answer = " ";
     });
   }
