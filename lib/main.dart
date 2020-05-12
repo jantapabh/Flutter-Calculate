@@ -162,16 +162,16 @@ class _MyCalculatorState extends State<MyCalculator> {
             ]),
             Row(children: <Widget>[ //แสดงปุ๋มแถวสุดท้ายโดยนับจากบนโดยมีตัวเลข 4 ตัว โดยเรียกการทำงานของ class buildNumberButton
               buildNumberButton("C", numberButton: false, onTap: () {
-                clearAll();
+                clearAll();    //ปุ่มแสดงเครื่องหมาย C และทำการลบค่าาทั้งหมด
               }),
               buildNumberButton("0", onTap: () {
-                addNumberToAnswer(0);
+                addNumberToAnswer(0); //ปุ่มแสดงเลข 0 และส่งค่า 0 ไปยังเมธอด addNumberToAnswer()
               }),
               buildNumberButton("=", numberButton: false, onTap: () {
-                calculate();
+                calculate(); //ปุ่มแสดงเครื่องหมาย = และเมื่อกดปุ๋มนี้จะแดงค่าผลลัพธ์
               }),
               buildNumberButton("/", numberButton: false, onTap: () {
-                addOperatorToAnswer("/");
+                addOperatorToAnswer("/");  //ปุ่มแสดงเครื่องหมาย / และทำการหารค่าเมื่อกดเครืองหมายนี้
               }),
             ]),
           ],
