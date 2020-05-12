@@ -193,52 +193,54 @@ class _MyCalculatorState extends State<MyCalculator> {
   //โหมดการทำงานการล้างค่า
 
   void clearAnswer() {
-    setState(() {  //ฟังก์ชั่นนี้จะทำการเคลียร์ค่าทั้งหมดให้เป็นค่าว่าง
+    setState(() {  //เมธอดนี้จะทำการเคลียร์ค่าให้เป็นค่าว่าง
       answer = " ";
     });
   }
 
   //โหมดการทำงานการล้างค่า
 
-  void clearAll() {
+  void clearAll() { //เมธอดนี้จะทำการเคลียร์ค่าทั้งหมดให้เป็นค่าว่าง
     setState(() {
-      answer = " ";
+      answer = " ";  
       inputFull = "";
       calculateMode = false;
-      operator = "";
+      operator = " ";
     });
   }
 
-  //โหมดการทำงานการล้คำนวณค่าและการเซ้คค่าของ state
+  //โหมดการทำงานการล้คำนวณค่าและการเซ็คค่าของ state
 
-  void calculate() {
+  void calculate() { //ในส่วนนี้จะเป็นการทำงานของฟังก์ชั่น calculate ที่ดำเนินการทาง๕ริตศาสตร์โดยจะมีตัวแปรที่เกี่ยวข้องคือ +, - , 8 และ / 
     setState(() {
-      if (calculateMode) {
+      if (calculateMode) { //เช็คเงื่อนไขว่ามีการเลือกคำนวณหรือไม่
 
-        bool decimalMode = false;
+        bool decimalMode = false; //เช็คค่าให้ตัวแปร decimalMode เป็นค่า false
         double value = 0;
 
         //โหมดการบวกค่า
         if (operator == "+") {
-          value = (double.parse(answerTemp) + double.parse(answer));
+          value = (double.parse(answerTemp) + double.parse(answer)); //ทำการบวกค่า
         } else if (operator == "-") {
-          value = (double.parse(answerTemp) - double.parse(answer));
+          value = (double.parse(answerTemp) - double.parse(answer));  //ทำการลบค่า
         } else if (operator == "×") {
-          value = (double.parse(answerTemp) * double.parse(answer));
+          value = (double.parse(answerTemp) * double.parse(answer)); //ทำการคูณค่า
         } else if (operator == "/") {
-          value = (double.parse(answerTemp) / double.parse(answer));
+          value = (double.parse(answerTemp) / double.parse(answer)); //ทำการหารค่า
+        }else if (operator == "/" && answer == 0) { //ทำการเช็ตเงื่อนไขเพิ่มเติมคือหารเกิดกรณีที่หารด้วย 0 นั้นจะแสดงค่าคำตอบเป็น Error
+          answer = "Error Calculate";
         }
         
-        if (!decimalMode) {
+        if (!decimalMode) {  //เงื่อนไขการเช็คค่าหาก decimalMode เป็นจริงก็จะทำการนำค่า value มาแปลงจาก double เป็น string
           answer = value.toInt().toString();
         } else {
-          answer = value.toString();
+          answer = value.toString(); //การเซ็ตค่าคำตอบที่ได้จากการคำนวณมาแปลงชนิดตัวแปรให้ value แปลงจาก double เป็น string
         }
 
-        calculateMode = false;
-        operator = "";
-        answerTemp = "";
-        inputFull = "";
+        calculateMode = false; //เช็คค่าให้ตัวแปร calculateMode เป็นค่า false
+        operator = "";  //เช็คค่าให้ตัวแปร operator เป็นค่าว่าง
+        answerTemp = ""; //เช็คค่าให้ตัวแปร answerTemp เป็นค่าว่าง
+        inputFull = "";  //เช็คค่าให้ตัวแปร inputFull เป็นค่าว่าง
 
       }
     });
@@ -278,7 +280,7 @@ class _MyCalculatorState extends State<MyCalculator> {
 
     setState(() {
 
-      if(number == 0 && answer == "0" && operator == "/"){
+      if( operator == "/" && answer == "0"){
 
         answer = "Error";
 
