@@ -122,7 +122,7 @@ class _MyCalculatorState extends State<MyCalculator> {
               onTap: () {  
                 addNumberToAnswer(9); 
               },),
-              buildNumberButton("8", onTap: () { // ฟังก์ชัน onTap คือฟังค์ชันสำหรับ handle กรณีที่ User กดที่ item ใน ปุ๋ม ทำหน้าที่คล้ายๆ onItemClickListener
+              buildNumberButton("8", onTap: () {  // ฟังก์ชัน onTap คือฟังค์ชันสำหรับ handle กรณีที่ User กดที่ item ใน ปุ๋ม ทำหน้าที่คล้ายๆ onItemClickListener
                 addNumberToAnswer(8);
               }),
               buildNumberButton("7", onTap: () {
